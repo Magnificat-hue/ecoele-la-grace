@@ -460,17 +460,21 @@
     });
   </script>
 
-  <!--
-    ============================================================
-    INTÉGRATION DU CHATBOT
-    Collez ici le script fourni par votre plateforme de chatbot
-    (ViaSay, Botpress, Tidio, Crisp, Dialogflow, etc.), juste
-    avant la balise </body>.
-
-    Exemple :
-    <script src="https://votre-plateforme.com/widget.js" data-bot-id="VOTRE_ID" async></script>
-    ============================================================
-  -->
+  <script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6ada44ab78a18e3c46bd72d4' },
+          url: 'https://general-runtime.voiceflow.com',
+          voice: {
+            url: 'https://runtime-api.voiceflow.com'
+          }
+        });
+      }
+      v.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs'; v.type = 'text/javascript'; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
 
 </body>
 </html>
