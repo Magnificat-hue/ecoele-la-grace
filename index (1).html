@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>École La Grâce | Excellence, foi et réussite</title>
+  <meta name="description" content="École La Grâce, établissement privé de la maternelle au collège à Cotonou. Admissions, programmes, frais de scolarité et contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-dark: #172c69;
+      --accent: #f59e0b;
+      --bg: #fdfbf7;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(30, 58, 138, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.2; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 100% - 32px); margin-inline: auto; }
+    section { padding: 80px 0; }
+    .section-title { text-align: center; margin-bottom: 48px; }
+    .section-title h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--primary); }
+    .section-title p { color: var(--muted); margin-top: 8px; }
+    .eyebrow {
+      display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(253, 251, 247, 0.92); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: "Fraunces", serif; font-weight: 700; font-size: 1.3rem; color: var(--primary); }
+    .logo-mark {
+      width: 40px; height: 40px; border-radius: 10px; background: var(--primary);
+      color: var(--accent); display: grid; place-items: center; font-size: 1.2rem;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; font-weight: 500; }
+    .nav-links a:hover { color: var(--primary); }
+    .btn {
+      display: inline-block; padding: 12px 24px; border-radius: 999px; font-weight: 600;
+      transition: transform .2s, background .2s; border: none; cursor: pointer; font-size: 1rem;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-accent { background: var(--accent); color: #1f2937; }
+    .btn-outline { border: 2px solid #fff; color: #fff; }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--primary); }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #2d4fb3 100%);
+      color: #fff; padding: 100px 0 90px; position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: ""; position: absolute; right: -120px; top: -120px; width: 420px; height: 420px;
+      border-radius: 50%; background: rgba(245, 158, 11, 0.18);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 680px; }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); margin-bottom: 20px; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { font-size: 1.15rem; opacity: .9; margin-bottom: 32px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 64px; position: relative; z-index: 1; }
+    .stat { background: rgba(255,255,255,0.1); border-radius: var(--radius); padding: 20px; text-align: center; }
+    .stat strong { display: block; font-family: "Fraunces", serif; font-size: 2rem; color: var(--accent); }
+    .stat span { font-size: .9rem; opacity: .85; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .about-visual {
+      aspect-ratio: 4/3; border-radius: var(--radius); background:
+        linear-gradient(160deg, rgba(30,58,138,.85), rgba(245,158,11,.75));
+      display: grid; place-items: center; color: #fff; font-family: "Fraunces", serif;
+      font-size: 1.6rem; text-align: center; padding: 32px; box-shadow: var(--shadow);
+    }
+    .about-text h2 { font-size: 2rem; color: var(--primary); margin-bottom: 16px; }
+    .about-text p { color: var(--muted); margin-bottom: 16px; }
+    .values { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .values span { background: #eef2ff; color: var(--primary); padding: 6px 14px; border-radius: 999px; font-size: .9rem; font-weight: 500; }
+
+    /* Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 28px; box-shadow: var(--shadow); transition: transform .2s;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card-icon { font-size: 2rem; margin-bottom: 14px; }
+    .card h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 6px; }
+    .card .age { font-size: .85rem; color: var(--accent); font-weight: 600; margin-bottom: 10px; display: block; }
+    .card p { color: var(--muted); font-size: .95rem; }
+
+    /* Admissions */
+    .alt-bg { background: #f3f4fa; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: step; }
+    .step { background: var(--surface); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border); position: relative; }
+    .step::before {
+      counter-increment: step; content: counter(step);
+      width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #1f2937;
+      display: grid; place-items: center; font-weight: 700; margin-bottom: 12px;
+    }
+    .step h3 { font-size: 1.1rem; margin-bottom: 6px; color: var(--primary); }
+    .step p { font-size: .92rem; color: var(--muted); }
+
+    /* Fees table */
+    .table-wrap { overflow-x: auto; margin-top: 48px; }
+    table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    th, td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--primary); color: #fff; font-weight: 600; }
+    tr:last-child td { border-bottom: none; }
+    .note { margin-top: 14px; font-size: .9rem; color: var(--muted); text-align: center; }
+
+    /* News */
+    .news-date { font-size: .85rem; color: var(--accent); font-weight: 600; }
+
+    /* FAQ */
+    .faq { max-width: 800px; margin-inline: auto; }
+    details {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 18px 22px; margin-bottom: 12px;
+    }
+    summary { cursor: pointer; font-weight: 600; color: var(--primary); list-style: none; display: flex; justify-content: space-between; }
+    summary::after { content: "+"; font-size: 1.3rem; color: var(--accent); }
+    details[open] summary::after { content: "−"; }
+    details p { margin-top: 12px; color: var(--muted); }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; }
+    .contact-info li { list-style: none; display: flex; gap: 14px; margin-bottom: 20px; }
+    .contact-info .ico { font-size: 1.4rem; }
+    .contact-info strong { display: block; color: var(--primary); }
+    form { background: var(--surface); padding: 32px; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); }
+    label { display: block; font-weight: 500; margin-bottom: 6px; font-size: .95rem; }
+    input, select, textarea {
+      width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px;
+      font: inherit; margin-bottom: 18px; background: var(--bg);
+    }
+    input:focus, select:focus, textarea:focus { outline: 2px solid var(--primary); border-color: transparent; }
+    .form-msg { display: none; margin-top: 12px; color: #047857; font-weight: 500; }
+
+    /* Footer */
+    footer { background: var(--primary-dark); color: #cbd5e1; padding: 48px 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+    footer h4 { color: #fff; margin-bottom: 12px; font-family: "Fraunces", serif; }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 8px; }
+    footer a:hover { color: var(--accent); }
+    .copyright { border-top: 1px solid rgba(255,255,255,.1); padding-top: 20px; text-align: center; font-size: .85rem; }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column;
+        background: var(--bg); padding: 20px 16px; border-bottom: 1px solid var(--border); gap: 16px;
+      }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+      .nav .btn { display: none; }
+      .stats, .steps { grid-template-columns: repeat(2, 1fr); }
+      .about-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
+      section { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== EN-TÊTE ===== -->
+  <header>
+    <div class="container nav">
+      <a href="#accueil" class="logo"><span class="logo-mark">✦</span> École La Grâce</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#programmes">Programmes</a></li>
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#actualites">Actualités</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#admissions" class="btn btn-primary">Inscrire mon enfant</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+    </div>
+  </header>
+
+  <!-- ===== ACCUEIL ===== -->
+  <section class="hero" id="accueil">
+    <div class="container">
+      <div class="hero-inner">
+        <span class="eyebrow">Inscriptions 2026-2027 ouvertes</span>
+        <h1>Former des esprits brillants, <span>des cœurs généreux.</span></h1>
+        <p>Depuis 2008, l'École La Grâce accompagne chaque enfant de la maternelle au collège avec un enseignement bilingue, des valeurs solides et un suivi personnalisé.</p>
+        <div class="hero-actions">
+          <a href="#admissions" class="btn btn-accent">Découvrir les admissions</a>
+          <a href="#contact" class="btn btn-outline">Planifier une visite</a>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>650+</strong><span>Élèves inscrits</span></div>
+        <div class="stat"><strong>98 %</strong><span>Réussite au CEP</span></div>
+        <div class="stat"><strong>45</strong><span>Enseignants qualifiés</span></div>
+        <div class="stat"><strong>18</strong><span>Années d'expérience</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== À PROPOS ===== -->
+  <section id="apropos">
+    <div class="container about-grid">
+      <div class="about-visual">« Chaque enfant porte en lui une grâce unique à révéler. »</div>
+      <div class="about-text">
+        <span class="eyebrow">Notre mission</span>
+        <h2>Une école où chaque enfant grandit en confiance</h2>
+        <p>Fondée en 2008 à Cotonou, l'École La Grâce est un établissement privé laïc reconnu par le Ministère des Enseignements. Nous accueillons les enfants de 3 à 15 ans dans un cadre sécurisé, verdoyant et stimulant.</p>
+        <p>Nos classes sont limitées à 25 élèves afin de garantir un suivi individuel. L'anglais est enseigné dès la maternelle et l'informatique dès le CE1.</p>
+        <div class="values">
+          <span>Excellence</span><span>Respect</span><span>Bienveillance</span><span>Discipline</span><span>Ouverture</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAMMES ===== -->
+  <section class="alt-bg" id="programmes">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Nos cycles</span>
+        <h2>Programmes scolaires</h2>
+        <p>Un parcours cohérent de la petite section à la 3e.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">🧸</div>
+          <h3>Maternelle</h3>
+          <span class="age">3 à 5 ans</span>
+          <p>Éveil sensoriel, langage, motricité, chants et initiation à l'anglais en petite, moyenne et grande section.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📚</div>
+          <h3>Primaire</h3>
+          <span class="age">6 à 11 ans · CI au CM2</span>
+          <p>Programme national renforcé : français, mathématiques, sciences, anglais, informatique et préparation au CEP.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎓</div>
+          <h3>Collège</h3>
+          <span class="age">12 à 15 ans · 6e à 3e</span>
+          <p>Enseignement général, laboratoire de sciences, club de robotique et préparation intensive au BEPC.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚽</div>
+          <h3>Activités parascolaires</h3>
+          <span class="age">Tous niveaux</span>
+          <p>Football, basketball, théâtre, chorale, club d'échecs, danse traditionnelle et club de lecture.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ADMISSIONS ===== -->
+  <section id="admissions">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Rejoignez-nous</span>
+        <h2>Admissions 2026-2027</h2>
+        <p>Inscriptions ouvertes du 1er juin au 30 septembre. Rentrée prévue le 14 septembre 2026.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Retirer le dossier</h3>
+          <p>Au secrétariat ou en ligne via le formulaire de contact. Frais de dossier : 10 000 FCFA.</p>
+        </div>
+        <div class="step">
+          <h3>Déposer les pièces</h3>
+          <p>Acte de naissance, 2 photos d'identité, carnet de vaccination et bulletins de l'année précédente.</p>
+        </div>
+        <div class="step">
+          <h3>Test d'évaluation</h3>
+          <p>Un test de niveau en français et mathématiques (à partir du CE1), suivi d'un entretien avec les parents.</p>
+        </div>
+        <div class="step">
+          <h3>Confirmation</h3>
+          <p>Réponse sous 5 jours ouvrables. L'inscription est validée après paiement du premier trimestre.</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Cycle</th><th>Frais d'inscription</th><th>Scolarité annuelle</th><th>Cantine (optionnelle)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Maternelle</td><td>25 000 FCFA</td><td>180 000 FCFA</td><td>60 000 FCFA</td></tr>
+            <tr><td>Primaire (CI à CM2)</td><td>30 000 FCFA</td><td>220 000 FCFA</td><td>60 000 FCFA</td></tr>
+            <tr><td>Collège (6e à 3e)</td><td>35 000 FCFA</td><td>280 000 FCFA</td><td>70 000 FCFA</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Paiement possible en 3 tranches (octobre, janvier, avril). Réduction de 10 % à partir du 2e enfant inscrit. Transport scolaire disponible sur certaines zones : 15 000 FCFA par mois.</p>
+    </div>
+  </section>
+
+  <!-- ===== ACTUALITÉS ===== -->
+  <section class="alt-bg" id="actualites">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Vie de l'école</span>
+        <h2>Actualités et événements</h2>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <span class="news-date">7 novembre 2026</span>
+          <h3>Journée portes ouvertes</h3>
+          <p>Visitez nos locaux, rencontrez les enseignants et découvrez nos activités de 9 h à 13 h.</p>
+        </div>
+        <div class="card">
+          <span class="news-date">20 au 23 novembre 2026</span>
+          <h3>Compositions du 1er trimestre</h3>
+          <p>Les évaluations trimestrielles auront lieu pour tous les niveaux. Remise des bulletins le 4 décembre.</p>
+        </div>
+        <div class="card">
+          <span class="news-date">18 décembre 2026</span>
+          <h3>Fête de Noël et vacances</h3>
+          <p>Spectacle des élèves à 15 h. Vacances de Noël du 19 décembre au 4 janvier inclus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Questions fréquentes</span>
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Quels sont les horaires de l'école ?</summary>
+          <p>Les cours ont lieu du lundi au vendredi de 7 h 30 à 12 h et de 15 h à 17 h 30. Le mercredi après-midi est consacré aux activités parascolaires. Une garderie est assurée de 6 h 45 à 18 h 30.</p>
+        </details>
+        <details>
+          <summary>L'école propose-t-elle une cantine ?</summary>
+          <p>Oui, une cantine avec des repas équilibrés préparés sur place est proposée en option. Les menus sont affichés chaque semaine et adaptés sur demande pour les régimes particuliers.</p>
+        </details>
+        <details>
+          <summary>Y a-t-il un transport scolaire ?</summary>
+          <p>Oui, nos bus desservent Akpakpa, Fidjrossè, Calavi et Godomey pour 15 000 FCFA par mois. Contactez le secrétariat pour vérifier votre zone.</p>
+        </details>
+        <details>
+          <summary>Mon enfant peut-il intégrer l'école en cours d'année ?</summary>
+          <p>Oui, sous réserve de places disponibles et après le test d'évaluation. Les frais de scolarité sont alors calculés au prorata des trimestres restants.</p>
+        </details>
+        <details>
+          <summary>Quelle est la tenue scolaire ?</summary>
+          <p>Chemise bleu ciel, pantalon ou jupe bleu marine, et chaussures fermées noires. Le kit uniforme (2 tenues + tenue de sport) est disponible au secrétariat pour 25 000 FCFA.</p>
+        </details>
+        <details>
+          <summary>Comment suivre la scolarité de mon enfant ?</summary>
+          <p>Les parents reçoivent un carnet de liaison, les bulletins trimestriels et peuvent rencontrer les enseignants sur rendez-vous. Une réunion parents-professeurs est organisée chaque trimestre.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="alt-bg" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Parlons-en</span>
+        <h2>Nous contacter</h2>
+      </div>
+      <div class="contact-grid">
+        <ul class="contact-info">
+          <li><span class="ico">📍</span><div><strong>Adresse</strong>Rue 1234, quartier Haie Vive, Cotonou, Bénin</div></li>
+          <li><span class="ico">📞</span><div><strong>Téléphone</strong>+229 01 00 00 00 00</div></li>
+          <li><span class="ico">✉️</span><div><strong>E-mail</strong>contact@ecolelagrace.test</div></li>
+          <li><span class="ico">🕐</span><div><strong>Secrétariat</strong>Lundi au vendredi, 7 h 30 à 17 h · Samedi, 8 h à 12 h</div></li>
+        </ul>
+        <form id="contactForm">
+          <label for="nom">Nom complet</label>
+          <input type="text" id="nom" required placeholder="Votre nom" />
+          <label for="email">E-mail</label>
+          <input type="email" id="email" required placeholder="vous@exemple.com" />
+          <label for="objet">Objet</label>
+          <select id="objet">
+            <option>Demande d'inscription</option>
+            <option>Planifier une visite</option>
+            <option>Frais de scolarité</option>
+            <option>Autre question</option>
+          </select>
+          <label for="message">Message</label>
+          <textarea id="message" rows="4" placeholder="Votre message"></textarea>
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+          <p class="form-msg" id="formMsg">Merci ! Votre message a bien été reçu (démo, aucun envoi réel).</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PIED DE PAGE ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>École La Grâce</h4>
+          <p>Établissement privé d'enseignement maternel, primaire et secondaire. Site fictif créé pour des tests.</p>
+        </div>
+        <div>
+          <h4>Liens</h4>
+          <ul>
+            <li><a href="#programmes">Programmes</a></li>
+            <li><a href="#admissions">Admissions</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Suivez-nous</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copyright">© 2026 École La Grâce. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Menu mobile
+    const toggle = document.getElementById("menuToggle");
+    const links = document.getElementById("navLinks");
+    toggle.addEventListener("click", () => links.classList.toggle("open"));
+    links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => links.classList.remove("open")));
+
+    // Formulaire de démonstration
+    document.getElementById("contactForm").addEventListener("submit", e => {
+      e.preventDefault();
+      document.getElementById("formMsg").style.display = "block";
+      e.target.reset();
+    });
+  </script>
+
+  <!--
+    ============================================================
+    INTÉGRATION DU CHATBOT
+    Collez ici le script fourni par votre plateforme de chatbot
+    (ViaSay, Botpress, Tidio, Crisp, Dialogflow, etc.), juste
+    avant la balise </body>.
+
+    Exemple :
+    <script src="https://votre-plateforme.com/widget.js" data-bot-id="VOTRE_ID" async></script>
+    ============================================================
+  -->
+
+</body>
+</html>
